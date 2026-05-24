@@ -187,6 +187,51 @@ footer {
     margin-top: 40px;
 }
 
+.admin-menu {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 30px;
+}
+
+.admin-section {
+    background: rgba(255,255,255,0.9);
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.admin-card {
+    background: white;
+    padding: 15px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    border: 2px solid rgba(107,163,104,0.2);
+}
+
+.admin-card img {
+    border-radius: 12px;
+    margin-bottom: 10px;
+}
+
+.admin-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.remove-btn {
+    background: #B23B3B;
+}
+
+.aviso-card {
+    background: #F5E6CC;
+    padding: 15px;
+    border-radius: 14px;
+    margin-top: 15px;
+    border-left: 5px solid #2E5E3B;
+}
+
 .admin {
     min-height: 100vh;
     padding: 30px 20px;
