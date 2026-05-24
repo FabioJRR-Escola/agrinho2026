@@ -7,6 +7,18 @@ const produtores = JSON.parse(localStorage.getItem('produtores'));
 const listaProdutores = document.getElementById('lista-produtores');
 const listaProdutos = document.getElementById('lista-produtos');
 
+const feiraInfo = JSON.parse(localStorage.getItem('feiraInfo'));
+
+const feiraCard = document.getElementById('feira-info-card');
+
+if(feiraInfo && feiraCard) {
+    feiraCard.innerHTML = `
+        <p>📍 ${feiraInfo.local}</p>
+        <p>📅 ${feiraInfo.data}</p>
+        <p>🕘 ${feiraInfo.horario}</p>
+    `;
+}
+
 produtores.forEach(produtor => {
 
     const cardProdutor = document.createElement('div');
