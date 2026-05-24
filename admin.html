@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Administrador</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<section class="admin">
+    <h1>Painel Administrativo</h1>
+
+    <form id="form-produtor">
+        <input type="text" id="nome" placeholder="Nome do produtor" required>
+
+        <input type="text" id="historia" placeholder="História do produtor" required>
+
+        <input type="text" id="produto" placeholder="Produto vendido" required>
+
+        <input type="text" id="imagem" placeholder="URL da imagem" required>
+
+        <button type="submit">Adicionar Produtor</button>
+    </form>
+</section>
+
+<script>
+const form = document.getElementById('form-produtor');
+
+form.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const produtor = {
+        nome: document.getElementById('nome').value,
+        historia: document.getElementById('historia').value,
+        produto: document.getElementById('produto').value,
+        imagem: document.getElementById('imagem').value
+    }
+
+    let produtores = JSON.parse(localStorage.getItem('produtores')) || [];
+
+    produtores.push(produtor);
+
+    localStorage.setItem('produtores', JSON.stringify(produtores));
+
+    alert('Produtor adicionado com sucesso!');
+
+    form.reset();
+});
+</script>
+
+</body>
+</html>
