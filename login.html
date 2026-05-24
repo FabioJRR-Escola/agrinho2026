@@ -3,280 +3,63 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Administrador</title>
+    <title>Login Administrativo</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section class="admin">
-    <h1>Painel Administrativo</h1>
+<section class="login-page">
+    <div class="login-box">
+        <h1>🌾 Área Administrativa</h1>
 
-    <div class="admin-menu" role="navigation">
-        <button type="button" onclick="mostrarSecao('cadastro-produtor')">Cadastrar Produtor</button>
-        <button type="button" onclick="mostrarSecao('produtores-cadastrados')">Ver Produtores</button>
-        <button type="button" onclick="mostrarSecao('editar-feira')">Informações da Feira</button>
-        <button type="button" onclick="mostrarSecao('avisos')">Avisos</button>
-        <button type="button" onclick="mostrarSecao('receitas-admin')">Receitas</button>
-    </div>
+        <form id="loginForm">
+            <input type="text" id="usuario" placeholder="Usuário" required>
 
-    <div id="cadastro-produtor" class="admin-section">
+            <input type="password" id="senha" placeholder="Senha" required>
 
-    <form id="form-produtor">
-        <input type="text" id="nome" placeholder="Nome do produtor" required>
-
-        <input type="text" id="historia" placeholder="História do produtor" required>
-
-        <input type="text" id="produto" placeholder="Produto vendido" required>
-
-        <input type="text" id="imagem" placeholder="URL da imagem" required>
-
-        <button type="submit">Adicionar Produtor</button>
-    </form>
-    </div>
-
-    <div id="produtores-cadastrados" class="admin-section" style="display:none;">
-        <h2>Produtores Cadastrados</h2>
-
-        <div id="lista-admin-produtores"></div>
-    </div>
-
-    <div id="editar-feira" class="admin-section" style="display:none;">
-        <h2>Editar Informações da Feira</h2>
-
-        <form id="form-feira">
-            <input type="text" id="local-feira" placeholder="Local da feira">
-
-            <input type="text" id="data-feira" placeholder="Data da feira">
-
-            <input type="text" id="horario-feira" placeholder="Horário da feira">
-
-            <button type="submit">Salvar Informações</button>
+            <button type="submit">Entrar</button>
         </form>
-    </div>
-
-    <div id="receitas-admin" class="admin-section" style="display:none;">
-        <h2>Adicionar Receita</h2>
-
-        <form id="form-receita">
-            <input type="text" id="nome-receita" placeholder="Nome da receita" required>
-
-            <input type="text" id="descricao-receita" placeholder="Descrição da receita" required>
-
-            <input type="text" id="imagem-receita" placeholder="URL da imagem" required>
-
-            <button type="submit">Adicionar Receita</button>
-        </form>
-
-        <div id="lista-receitas-admin"></div>
-    </div>
-
-    <div id="avisos" class="admin-section" style="display:none;">
-        <h2>Área de Avisos</h2>
-
-        <form id="form-aviso">
-            <input type="text" id="texto-aviso" placeholder="Digite um aviso">
-
-            <button type="submit">Publicar Aviso</button>
-        </form>
-
-        <div id="lista-avisos"></div>
     </div>
 </section>
 
 <script>
-const form = document.getElementById('form-produtor');
+function mostrarSecao(id) {
+    console.log('Abrindo seção:', id);
 
-form.addEventListener('submit', function(e){
-    e.preventDefault();
+    const secoes = document.querySelectorAll('.admin-section');
 
-    const produtor = {
-        nome: document.getElementById('nome').value,
-        historia: document.getElementById('historia').value,
-        produto: document.getElementById('produto').value,
-        imagem: document.getElementById('imagem').value
+    secoes.forEach(secao => {
+        secao.style.display = 'none';
+    });
+
+    const secaoSelecionada = document.getElementById(id);
+
+    if(secaoSelecionada) {
+        secaoSelecionada.style.display = 'block';
     }
 
-    let produtores = JSON.parse(localStorage.getItem('produtores')) || [];
-
-    produtores.push(produtor);
-
-    localStorage.setItem('produtores', JSON.stringify(produtores));
-
-    alert('Produtor adicionado com sucesso!');
-
-    form.reset();
-
-    carregarProdutores();
-});
-
-function carregarProdutores() {
-    const lista = document.getElementById('lista-admin-produtores');
-
-    lista.innerHTML = '';
-
-    let produtores = JSON.parse(localStorage.getItem('produtores')) || [];
-
-    produtores.forEach((produtor, index) => {
-
-        lista.innerHTML += `
-            <div class="admin-card">
-                <img src="${produtor.imagem}" width="100%">
-
-                <h3>${produtor.nome}</h3>
-
-                <p>${produtor.produto}</p>
-
-                <div class="admin-actions">
-                    <button onclick="editarProdutor(${index})">Editar</button>
-
-                    <button onclick="removerProdutor(${index})" class="remove-btn">Remover</button>
-                </div>
-            </div>
-        `;
+    return false;
+    document.querySelectorAll('.admin-section').forEach(secao => {
+        secao.style.display = 'none';
     });
+
+    document.getElementById(id).style.display = 'block';
 }
 
-function removerProdutor(index) {
-    let produtores = JSON.parse(localStorage.getItem('produtores')) || [];
+const loginForm = document.getElementById('loginForm');
 
-    produtores.splice(index, 1);
-
-    localStorage.setItem('produtores', JSON.stringify(produtores));
-
-    carregarProdutores();
-}
-
-function editarProdutor(index) {
-    let produtores = JSON.parse(localStorage.getItem('produtores')) || [];
-
-    const produtor = produtores[index];
-
-    document.getElementById('nome').value = produtor.nome;
-    document.getElementById('historia').value = produtor.historia;
-    document.getElementById('produto').value = produtor.produto;
-    document.getElementById('imagem').value = produtor.imagem;
-
-    produtores.splice(index, 1);
-
-    localStorage.setItem('produtores', JSON.stringify(produtores));
-
-    mostrarSecao('cadastro-produtor');
-}
-
-const formFeira = document.getElementById('form-feira');
-
-formFeira.addEventListener('submit', function(e){
+loginForm.addEventListener('submit', function(e){
     e.preventDefault();
 
-    const feira = {
-        local: document.getElementById('local-feira').value,
-        data: document.getElementById('data-feira').value,
-        horario: document.getElementById('horario-feira').value
+    const usuario = document.getElementById('usuario').value;
+    const senha = document.getElementById('senha').value;
+
+    if(usuario === 'admin' && senha === 'agro2026') {
+        window.location.href = 'admin.html';
+    } else {
+        alert('Usuário ou senha incorretos.');
     }
-
-    localStorage.setItem('feiraInfo', JSON.stringify(feira));
-
-    alert('Informações da feira atualizadas!');
 });
-
-const formAviso = document.getElementById('form-aviso');
-
-formAviso.addEventListener('submit', function(e){
-    e.preventDefault();
-
-    let avisos = JSON.parse(localStorage.getItem('avisos')) || [];
-
-    avisos.push(document.getElementById('texto-aviso').value);
-
-    localStorage.setItem('avisos', JSON.stringify(avisos));
-
-    carregarAvisos();
-carregarReceitas();
-
-const formReceita = document.getElementById('form-receita');
-
-formReceita.addEventListener('submit', function(e){
-    e.preventDefault();
-
-    const receita = {
-        nome: document.getElementById('nome-receita').value,
-        descricao: document.getElementById('descricao-receita').value,
-        imagem: document.getElementById('imagem-receita').value
-    }
-
-    let receitas = JSON.parse(localStorage.getItem('receitas')) || [];
-
-    receitas.push(receita);
-
-    localStorage.setItem('receitas', JSON.stringify(receitas));
-
-    formReceita.reset();
-
-    carregarReceitas();
-
-    alert('Receita adicionada com sucesso!');
-});
-
-function carregarReceitas() {
-    const listaReceitas = document.getElementById('lista-receitas-admin');
-
-    if(!listaReceitas) return;
-
-    listaReceitas.innerHTML = '';
-
-    let receitas = JSON.parse(localStorage.getItem('receitas')) || [];
-
-    receitas.forEach((receita, index) => {
-        listaReceitas.innerHTML += `
-            <div class="admin-card">
-                <img src="${receita.imagem}" width="100%">
-
-                <h3>${receita.nome}</h3>
-
-                <p>${receita.descricao}</p>
-
-                <div class="admin-actions">
-                    <button onclick="removerReceita(${index})" class="remove-btn">
-                        Remover
-                    </button>
-                </div>
-            </div>
-        `;
-    });
-}
-
-function removerReceita(index) {
-    let receitas = JSON.parse(localStorage.getItem('receitas')) || [];
-
-    receitas.splice(index, 1);
-
-    localStorage.setItem('receitas', JSON.stringify(receitas));
-
-    carregarReceitas();
-}
-
-    formAviso.reset();
-});
-
-function carregarAvisos() {
-    const listaAvisos = document.getElementById('lista-avisos');
-
-    listaAvisos.innerHTML = '';
-
-    let avisos = JSON.parse(localStorage.getItem('avisos')) || [];
-
-    avisos.forEach(aviso => {
-        listaAvisos.innerHTML += `
-            <div class="aviso-card">
-                <p>${aviso}</p>
-            </div>
-        `;
-    });
-}
-
-carregarProdutores();
-carregarAvisos();
-
 </script>
 
 </body>
