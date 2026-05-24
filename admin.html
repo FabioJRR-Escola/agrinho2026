@@ -11,6 +11,15 @@
 <section class="admin">
     <h1>Painel Administrativo</h1>
 
+    <div class="admin-menu">
+        <button onclick="mostrarSecao('cadastro-produtor')">Cadastrar Produtor</button>
+        <button onclick="mostrarSecao('produtores-cadastrados')">Ver Produtores</button>
+        <button onclick="mostrarSecao('editar-feira')">Informações da Feira</button>
+        <button onclick="mostrarSecao('avisos')">Avisos</button>
+    </div>
+
+    <div id="cadastro-produtor" class="admin-section">
+
     <form id="form-produtor">
         <input type="text" id="nome" placeholder="Nome do produtor" required>
 
@@ -22,6 +31,39 @@
 
         <button type="submit">Adicionar Produtor</button>
     </form>
+    </div>
+
+    <div id="produtores-cadastrados" class="admin-section" style="display:none;">
+        <h2>Produtores Cadastrados</h2>
+
+        <div id="lista-admin-produtores"></div>
+    </div>
+
+    <div id="editar-feira" class="admin-section" style="display:none;">
+        <h2>Editar Informações da Feira</h2>
+
+        <form id="form-feira">
+            <input type="text" id="local-feira" placeholder="Local da feira">
+
+            <input type="text" id="data-feira" placeholder="Data da feira">
+
+            <input type="text" id="horario-feira" placeholder="Horário da feira">
+
+            <button type="submit">Salvar Informações</button>
+        </form>
+    </div>
+
+    <div id="avisos" class="admin-section" style="display:none;">
+        <h2>Área de Avisos</h2>
+
+        <form id="form-aviso">
+            <input type="text" id="texto-aviso" placeholder="Digite um aviso">
+
+            <button type="submit">Publicar Aviso</button>
+        </form>
+
+        <div id="lista-avisos"></div>
+    </div>
 </section>
 
 <script>
@@ -46,7 +88,115 @@ form.addEventListener('submit', function(e){
     alert('Produtor adicionado com sucesso!');
 
     form.reset();
+
+    carregarProdutores();
 });
+
+function carregarProdutores() {
+    const lista = document.getElementById('lista-admin-produtores');
+
+    lista.innerHTML = '';
+
+    let produtores = JSON.parse(localStorage.getItem('produtores')) || [];
+
+    produtores.forEach((produtor, index) => {
+
+        lista.innerHTML += `
+            <div class="admin-card">
+                <img src="${produtor.imagem}" width="100%">
+
+                <h3>${produtor.nome}</h3>
+
+                <p>${produtor.produto}</p>
+
+                <div class="admin-actions">
+                    <button onclick="editarProdutor(${index})">Editar</button>
+
+                    <button onclick="removerProdutor(${index})" class="remove-btn">Remover</button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function removerProdutor(index) {
+    let produtores = JSON.parse(localStorage.getItem('produtores')) || [];
+
+    produtores.splice(index, 1);
+
+    localStorage.setItem('produtores', JSON.stringify(produtores));
+
+    carregarProdutores();
+}
+
+function editarProdutor(index) {
+    let produtores = JSON.parse(localStorage.getItem('produtores')) || [];
+
+    const produtor = produtores[index];
+
+    document.getElementById('nome').value = produtor.nome;
+    document.getElementById('historia').value = produtor.historia;
+    document.getElementById('produto').value = produtor.produto;
+    document.getElementById('imagem').value = produtor.imagem;
+
+    produtores.splice(index, 1);
+
+    localStorage.setItem('produtores', JSON.stringify(produtores));
+
+    mostrarSecao('cadastro-produtor');
+}
+
+const formFeira = document.getElementById('form-feira');
+
+formFeira.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const feira = {
+        local: document.getElementById('local-feira').value,
+        data: document.getElementById('data-feira').value,
+        horario: document.getElementById('horario-feira').value
+    }
+
+    localStorage.setItem('feiraInfo', JSON.stringify(feira));
+
+    alert('Informações da feira atualizadas!');
+});
+
+const formAviso = document.getElementById('form-aviso');
+
+formAviso.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    let avisos = JSON.parse(localStorage.getItem('avisos')) || [];
+
+    avisos.push(document.getElementById('texto-aviso').value);
+
+    localStorage.setItem('avisos', JSON.stringify(avisos));
+
+    carregarAvisos();
+
+    formAviso.reset();
+});
+
+function carregarAvisos() {
+    const listaAvisos = document.getElementById('lista-avisos');
+
+    listaAvisos.innerHTML = '';
+
+    let avisos = JSON.parse(localStorage.getItem('avisos')) || [];
+
+    avisos.forEach(aviso => {
+        listaAvisos.innerHTML += `
+            <div class="aviso-card">
+                <p>${aviso}</p>
+            </div>
+        `;
+    });
+}
+
+carregarProdutores();
+carregarAvisos();
+
 </script>
 
 </body>
