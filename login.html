@@ -23,6 +23,14 @@
 </section>
 
 <script>
+function mostrarSecao(id) {
+    document.querySelectorAll('.admin-section').forEach(secao => {
+        secao.style.display = 'none';
+    });
+
+    document.getElementById(id).style.display = 'block';
+}
+
 const loginForm = document.getElementById('loginForm');
 
 loginForm.addEventListener('submit', function(e){
@@ -31,7 +39,7 @@ loginForm.addEventListener('submit', function(e){
     const usuario = document.getElementById('usuario').value;
     const senha = document.getElementById('senha').value;
 
-    if(usuario === 'agrinho2026' && senha === 'ccmsantosdumont') {
+    if(usuario === 'admin' && senha === 'agro2026') {
         window.location.href = 'admin.html';
     } else {
         alert('Usuário ou senha incorretos.');
