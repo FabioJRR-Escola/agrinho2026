@@ -12,10 +12,11 @@
     <h1>Painel Administrativo</h1>
 
     <div class="admin-menu">
-        <button onclick="mostrarSecao('cadastro-produtor')">Cadastrar Produtor</button>
-        <button onclick="mostrarSecao('produtores-cadastrados')">Ver Produtores</button>
-        <button onclick="mostrarSecao('editar-feira')">Informações da Feira</button>
-        <button onclick="mostrarSecao('avisos')">Avisos</button>
+        <button type="button" onclick="mostrarSecao('cadastro-produtor')">Cadastrar Produtor</button>
+        <button type="button" onclick="mostrarSecao('produtores-cadastrados')">Ver Produtores</button>
+        <button type="button" onclick="mostrarSecao('editar-feira')">Informações da Feira</button>
+        <button type="button" onclick="mostrarSecao('avisos')">Avisos</button>
+        <button type="button" onclick="mostrarSecao('receitas-admin')">Receitas</button>
     </div>
 
     <div id="cadastro-produtor" class="admin-section">
@@ -51,6 +52,22 @@
 
             <button type="submit">Salvar Informações</button>
         </form>
+    </div>
+
+    <div id="receitas-admin" class="admin-section" style="display:none;">
+        <h2>Adicionar Receita</h2>
+
+        <form id="form-receita">
+            <input type="text" id="nome-receita" placeholder="Nome da receita" required>
+
+            <input type="text" id="descricao-receita" placeholder="Descrição da receita" required>
+
+            <input type="text" id="imagem-receita" placeholder="URL da imagem" required>
+
+            <button type="submit">Adicionar Receita</button>
+        </form>
+
+        <div id="lista-receitas-admin"></div>
     </div>
 
     <div id="avisos" class="admin-section" style="display:none;">
@@ -174,6 +191,69 @@ formAviso.addEventListener('submit', function(e){
     localStorage.setItem('avisos', JSON.stringify(avisos));
 
     carregarAvisos();
+carregarReceitas();
+
+const formReceita = document.getElementById('form-receita');
+
+formReceita.addEventListener('submit', function(e){
+    e.preventDefault();
+
+    const receita = {
+        nome: document.getElementById('nome-receita').value,
+        descricao: document.getElementById('descricao-receita').value,
+        imagem: document.getElementById('imagem-receita').value
+    }
+
+    let receitas = JSON.parse(localStorage.getItem('receitas')) || [];
+
+    receitas.push(receita);
+
+    localStorage.setItem('receitas', JSON.stringify(receitas));
+
+    formReceita.reset();
+
+    carregarReceitas();
+
+    alert('Receita adicionada com sucesso!');
+});
+
+function carregarReceitas() {
+    const listaReceitas = document.getElementById('lista-receitas-admin');
+
+    if(!listaReceitas) return;
+
+    listaReceitas.innerHTML = '';
+
+    let receitas = JSON.parse(localStorage.getItem('receitas')) || [];
+
+    receitas.forEach((receita, index) => {
+        listaReceitas.innerHTML += `
+            <div class="admin-card">
+                <img src="${receita.imagem}" width="100%">
+
+                <h3>${receita.nome}</h3>
+
+                <p>${receita.descricao}</p>
+
+                <div class="admin-actions">
+                    <button onclick="removerReceita(${index})" class="remove-btn">
+                        Remover
+                    </button>
+                </div>
+            </div>
+        `;
+    });
+}
+
+function removerReceita(index) {
+    let receitas = JSON.parse(localStorage.getItem('receitas')) || [];
+
+    receitas.splice(index, 1);
+
+    localStorage.setItem('receitas', JSON.stringify(receitas));
+
+    carregarReceitas();
+}
 
     formAviso.reset();
 });
