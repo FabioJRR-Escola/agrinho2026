@@ -21,41 +21,57 @@
 
     <h1>🌾 Painel Administrativo</h1>
 
+    <!-- MENU -->
+
     <div class="admin-menu">
 
         <button type="button"
                 onclick="mostrarSecao('banner-admin')">
+
             Banner
+
         </button>
 
         <button type="button"
                 onclick="mostrarSecao('cadastro-produtor')">
+
             Cadastrar Produtor
+
         </button>
 
         <button type="button"
                 onclick="mostrarSecao('produtores-cadastrados')">
+
             Ver Produtores
+
         </button>
 
         <button type="button"
                 onclick="mostrarSecao('editar-feira')">
+
             Informações da Feira
+
         </button>
 
         <button type="button"
-                onclick="mostrarSecao('avisos')">
+                onclick="mostrarSecao('avisos-admin')">
+
             Avisos
+
         </button>
 
         <button type="button"
                 onclick="mostrarSecao('receitas-admin')">
+
             Receitas
+
         </button>
 
     </div>
 
-    <!-- BANNER -->
+    <!-- =========================================
+    BANNER
+    ========================================= -->
 
     <div id="banner-admin"
          class="admin-section">
@@ -81,14 +97,18 @@
                    placeholder="URL da imagem do banner">
 
             <button type="submit">
+
                 Salvar Banner
+
             </button>
 
         </form>
 
     </div>
 
-    <!-- PRODUTORES -->
+    <!-- =========================================
+    CADASTRAR PRODUTOR
+    ========================================= -->
 
     <div id="cadastro-produtor"
          class="admin-section"
@@ -105,12 +125,12 @@
 
             <input type="text"
                    id="historia"
-                   placeholder="História"
+                   placeholder="História do produtor"
                    required>
 
             <input type="text"
                    id="produto"
-                   placeholder="Produto"
+                   placeholder="Produto vendido"
                    required>
 
             <input type="text"
@@ -119,26 +139,32 @@
                    required>
 
             <button type="submit">
+
                 Adicionar Produtor
+
             </button>
 
         </form>
 
     </div>
 
-    <!-- VER PRODUTORES -->
+    <!-- =========================================
+    PRODUTORES CADASTRADOS
+    ========================================= -->
 
     <div id="produtores-cadastrados"
          class="admin-section"
          style="display:none;">
 
-        <h2>Produtores</h2>
+        <h2>Produtores Cadastrados</h2>
 
         <div id="lista-admin-produtores"></div>
 
     </div>
 
-    <!-- FEIRA -->
+    <!-- =========================================
+    FEIRA
+    ========================================= -->
 
     <div id="editar-feira"
          class="admin-section"
@@ -150,7 +176,7 @@
 
             <input type="text"
                    id="local-feira"
-                   placeholder="Local">
+                   placeholder="Local da feira">
 
             <input type="text"
                    id="data-feira"
@@ -161,16 +187,28 @@
                    placeholder="Horário">
 
             <button type="submit">
-                Salvar
+
+                Salvar Informações
+
+            </button>
+
+            <button type="button"
+                    onclick="removerFeira()"
+                    class="remove-btn">
+
+                Remover Informações
+
             </button>
 
         </form>
 
     </div>
 
-    <!-- AVISOS -->
+    <!-- =========================================
+    AVISOS
+    ========================================= -->
 
-    <div id="avisos"
+    <div id="avisos-admin"
          class="admin-section"
          style="display:none;">
 
@@ -182,17 +220,27 @@
                    id="texto-aviso"
                    placeholder="Digite um aviso">
 
+            <input type="text"
+                   id="tempo-aviso"
+                   placeholder="Ex: Há 2 horas">
+
             <button type="submit">
-                Publicar
+
+                Publicar Aviso
+
             </button>
 
         </form>
 
-        <div id="lista-avisos"></div>
+        <br>
+
+        <div id="lista-avisos-admin"></div>
 
     </div>
 
-    <!-- RECEITAS -->
+    <!-- =========================================
+    RECEITAS
+    ========================================= -->
 
     <div id="receitas-admin"
          class="admin-section"
@@ -215,10 +263,14 @@
                    placeholder="URL da imagem">
 
             <button type="submit">
+
                 Adicionar Receita
+
             </button>
 
         </form>
+
+        <br>
 
         <div id="lista-receitas-admin"></div>
 
