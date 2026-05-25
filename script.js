@@ -1,93 +1,55 @@
 /* =========================================
+MOSTRAR SEÇÕES
+========================================= */
+
+function mostrarSecao(id) {
+
+    const secoes =
+        document.querySelectorAll('.admin-section');
+
+    secoes.forEach(secao => {
+
+        secao.style.display = 'none';
+    });
+
+    document.getElementById(id)
+        .style.display = 'block';
+}
+
+/* =========================================
 BANNER
 ========================================= */
 
-const bannerInfo =
-    JSON.parse(localStorage.getItem('bannerInfo'));
+const formBanner =
+    document.getElementById('form-banner');
 
-if(bannerInfo) {
+if(formBanner) {
 
-    const bannerImage =
-        document.getElementById('banner-image');
+    formBanner.addEventListener('submit', function(e){
 
-    const bannerLogo =
-        document.getElementById('banner-logo');
+        e.preventDefault();
 
-    if(bannerImage && bannerInfo.imagem) {
+        const banner = {
 
-        bannerImage.src = bannerInfo.imagem;
-    }
+            titulo:
+                document.getElementById('banner-titulo').value,
 
-    if(bannerLogo && bannerInfo.logo) {
+            subtitulo:
+                document.getElementById('banner-subtitulo').value,
 
-        bannerLogo.src = bannerInfo.logo;
-    }
+            imagem:
+                document.getElementById('banner-imagem').value,
 
-    const titulo =
-        document.getElementById('banner-title');
+            logo:
+                document.getElementById('banner-logo-input').value
+        };
 
-    const subtitulo =
-        document.getElementById('banner-subtitle');
+        localStorage.setItem(
+            'bannerInfo',
+            JSON.stringify(banner)
+        );
 
-    if(titulo && bannerInfo.titulo) {
-
-        titulo.innerText = bannerInfo.titulo;
-    }
-
-    if(subtitulo && bannerInfo.subtitulo) {
-
-        subtitulo.innerText = bannerInfo.subtitulo;
-    }
-}
-
-/* =========================================
-FEIRA
-========================================= */
-
-const feiraInfo =
-    JSON.parse(localStorage.getItem('feiraInfo'));
-
-const feiraCard =
-    document.getElementById('feira-info-card');
-
-if(feiraInfo && feiraCard) {
-
-    feiraCard.innerHTML = `
-
-        <p>📍 ${feiraInfo.local}</p>
-
-        <br>
-
-        <p>📅 ${feiraInfo.data}</p>
-
-        <br>
-
-        <p>🕘 ${feiraInfo.horario}</p>
-    `;
-}
-
-/* =========================================
-AVISOS
-========================================= */
-
-const avisosHome =
-    document.getElementById('avisos-home');
-
-const avisos =
-    JSON.parse(localStorage.getItem('avisos')) || [];
-
-if(avisosHome) {
-
-    avisos.forEach(aviso => {
-
-        avisosHome.innerHTML += `
-
-            <div class="aviso-card">
-
-                <p>${aviso}</p>
-
-            </div>
-        `;
+        alert('Banner atualizado!');
     });
 }
 
@@ -95,70 +57,305 @@ if(avisosHome) {
 PRODUTORES
 ========================================= */
 
-const produtores =
-    JSON.parse(localStorage.getItem('produtores')) || [];
+const formProdutor =
+    document.getElementById('form-produtor');
 
-const listaProdutores =
-    document.getElementById('lista-produtores');
+if(formProdutor) {
 
-const listaProdutos =
-    document.getElementById('lista-produtos');
+    formProdutor.addEventListener('submit', function(e){
 
-if(listaProdutores) {
+        e.preventDefault();
 
-    produtores.forEach(produtor => {
+        const produtor = {
 
-        listaProdutores.innerHTML += `
+            nome:
+                document.getElementById('nome').value,
 
-            <div class="card">
+            historia:
+                document.getElementById('historia').value,
+
+            produto:
+                document.getElementById('produto').value,
+
+            imagem:
+                document.getElementById('imagem').value
+        };
+
+        let produtores =
+            JSON.parse(localStorage.getItem('produtores')) || [];
+
+        produtores.push(produtor);
+
+        localStorage.setItem(
+            'produtores',
+            JSON.stringify(produtores)
+        );
+
+        alert('Produtor cadastrado!');
+
+        formProdutor.reset();
+
+        carregarProdutoresAdmin();
+    });
+}
+
+/* =========================================
+LISTAR PRODUTORES
+========================================= */
+
+function carregarProdutoresAdmin() {
+
+    const lista =
+        document.getElementById('lista-admin-produtores');
+
+    if(!lista) return;
+
+    lista.innerHTML = '';
+
+    let produtores =
+        JSON.parse(localStorage.getItem('produtores')) || [];
+
+    produtores.forEach((produtor, index) => {
+
+        lista.innerHTML += `
+
+            <div class="admin-card">
 
                 <img src="${produtor.imagem}">
 
                 <h3>${produtor.nome}</h3>
 
-                <p>${produtor.historia}</p>
+                <p>${produtor.produto}</p>
+
+                <br>
+
+                <button onclick="removerProdutor(${index})"
+                        class="remove-btn">
+
+                    Remover
+
+                </button>
 
             </div>
         `;
     });
 }
 
-if(listaProdutos) {
+function removerProdutor(index) {
 
-    produtores.forEach(produtor => {
+    let produtores =
+        JSON.parse(localStorage.getItem('produtores')) || [];
 
-        listaProdutos.innerHTML += `
+    produtores.splice(index, 1);
 
-            <div class="card">
+    localStorage.setItem(
+        'produtores',
+        JSON.stringify(produtores)
+    );
 
-                <img src="${produtor.imagem}">
+    carregarProdutoresAdmin();
+}
 
-                <h3>${produtor.produto}</h3>
+carregarProdutoresAdmin();
 
-                <p>Produzido por ${produtor.nome}</p>
+/* =========================================
+FEIRA
+========================================= */
+
+const formFeira =
+    document.getElementById('form-feira');
+
+if(formFeira) {
+
+    formFeira.addEventListener('submit', function(e){
+
+        e.preventDefault();
+
+        const feira = {
+
+            local:
+                document.getElementById('local-feira').value,
+
+            data:
+                document.getElementById('data-feira').value,
+
+            horario:
+                document.getElementById('horario-feira').value
+        };
+
+        localStorage.setItem(
+            'feiraInfo',
+            JSON.stringify(feira)
+        );
+
+        alert('Informações salvas!');
+    });
+}
+
+function removerFeira() {
+
+    localStorage.removeItem('feiraInfo');
+
+    alert('Informações removidas!');
+
+    location.reload();
+}
+
+/* =========================================
+AVISOS
+========================================= */
+
+const formAviso =
+    document.getElementById('form-aviso');
+
+if(formAviso) {
+
+    formAviso.addEventListener('submit', function(e){
+
+        e.preventDefault();
+
+        const aviso = {
+
+            texto:
+                document.getElementById('texto-aviso').value,
+
+            tempo:
+                document.getElementById('tempo-aviso').value
+        };
+
+        let avisos =
+            JSON.parse(localStorage.getItem('avisos')) || [];
+
+        avisos.push(aviso);
+
+        localStorage.setItem(
+            'avisos',
+            JSON.stringify(avisos)
+        );
+
+        alert('Aviso publicado!');
+
+        formAviso.reset();
+
+        carregarAvisosAdmin();
+    });
+}
+
+function carregarAvisosAdmin() {
+
+    const lista =
+        document.getElementById('lista-avisos-admin');
+
+    if(!lista) return;
+
+    lista.innerHTML = '';
+
+    let avisos =
+        JSON.parse(localStorage.getItem('avisos')) || [];
+
+    avisos.forEach((aviso, index) => {
+
+        lista.innerHTML += `
+
+            <div class="admin-card">
+
+                <p>${aviso.texto}</p>
+
+                <small>
+                    ⏰ ${aviso.tempo}
+                </small>
+
+                <br><br>
+
+                <button onclick="removerAviso(${index})"
+                        class="remove-btn">
+
+                    Remover
+
+                </button>
 
             </div>
         `;
     });
 }
+
+function removerAviso(index) {
+
+    let avisos =
+        JSON.parse(localStorage.getItem('avisos')) || [];
+
+    avisos.splice(index, 1);
+
+    localStorage.setItem(
+        'avisos',
+        JSON.stringify(avisos)
+    );
+
+    carregarAvisosAdmin();
+}
+
+carregarAvisosAdmin();
 
 /* =========================================
 RECEITAS
 ========================================= */
 
-const receitas =
-    JSON.parse(localStorage.getItem('receitas')) || [];
+const formReceita =
+    document.getElementById('form-receita');
 
-const listaReceitas =
-    document.getElementById('lista-receitas-home');
+if(formReceita) {
 
-if(listaReceitas) {
+    formReceita.addEventListener('submit', function(e){
 
-    receitas.forEach(receita => {
+        e.preventDefault();
 
-        listaReceitas.innerHTML += `
+        const receita = {
 
-            <div class="card">
+            nome:
+                document.getElementById('nome-receita').value,
+
+            descricao:
+                document.getElementById('descricao-receita').value,
+
+            imagem:
+                document.getElementById('imagem-receita').value
+        };
+
+        let receitas =
+            JSON.parse(localStorage.getItem('receitas')) || [];
+
+        receitas.push(receita);
+
+        localStorage.setItem(
+            'receitas',
+            JSON.stringify(receitas)
+        );
+
+        alert('Receita adicionada!');
+
+        formReceita.reset();
+
+        carregarReceitasAdmin();
+    });
+}
+
+function carregarReceitasAdmin() {
+
+    const lista =
+        document.getElementById('lista-receitas-admin');
+
+    if(!lista) return;
+
+    lista.innerHTML = '';
+
+    let receitas =
+        JSON.parse(localStorage.getItem('receitas')) || [];
+
+    receitas.forEach((receita, index) => {
+
+        lista.innerHTML += `
+
+            <div class="admin-card">
 
                 <img src="${receita.imagem}">
 
@@ -166,7 +363,33 @@ if(listaReceitas) {
 
                 <p>${receita.descricao}</p>
 
+                <br>
+
+                <button onclick="removerReceita(${index})"
+                        class="remove-btn">
+
+                    Remover
+
+                </button>
+
             </div>
         `;
     });
 }
+
+function removerReceita(index) {
+
+    let receitas =
+        JSON.parse(localStorage.getItem('receitas')) || [];
+
+    receitas.splice(index, 1);
+
+    localStorage.setItem(
+        'receitas',
+        JSON.stringify(receitas)
+    );
+
+    carregarReceitasAdmin();
+}
+
+carregarReceitasAdmin();
