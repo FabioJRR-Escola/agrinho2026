@@ -2,13 +2,17 @@
 <html lang="pt-BR">
 
 <head>
+
     <meta charset="UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
 
     <title>Painel Administrativo</title>
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet"
+          href="style.css">
+
 </head>
 
 <body>
@@ -17,33 +21,78 @@
 
     <h1>🌾 Painel Administrativo</h1>
 
-    <div class="admin-menu" role="navigation">
+    <div class="admin-menu">
 
-        <button type="button" onclick="mostrarSecao('cadastro-produtor')">
+        <button type="button"
+                onclick="mostrarSecao('banner-admin')">
+            Banner
+        </button>
+
+        <button type="button"
+                onclick="mostrarSecao('cadastro-produtor')">
             Cadastrar Produtor
         </button>
 
-        <button type="button" onclick="mostrarSecao('produtores-cadastrados')">
+        <button type="button"
+                onclick="mostrarSecao('produtores-cadastrados')">
             Ver Produtores
         </button>
 
-        <button type="button" onclick="mostrarSecao('editar-feira')">
+        <button type="button"
+                onclick="mostrarSecao('editar-feira')">
             Informações da Feira
         </button>
 
-        <button type="button" onclick="mostrarSecao('avisos')">
+        <button type="button"
+                onclick="mostrarSecao('avisos')">
             Avisos
         </button>
 
-        <button type="button" onclick="mostrarSecao('receitas-admin')">
+        <button type="button"
+                onclick="mostrarSecao('receitas-admin')">
             Receitas
         </button>
 
     </div>
 
-    <!-- CADASTRAR PRODUTOR -->
+    <!-- BANNER -->
 
-    <div id="cadastro-produtor" class="admin-section">
+    <div id="banner-admin"
+         class="admin-section">
+
+        <h2>Editar Banner</h2>
+
+        <form id="form-banner">
+
+            <input type="text"
+                   id="banner-titulo"
+                   placeholder="Título do banner">
+
+            <input type="text"
+                   id="banner-subtitulo"
+                   placeholder="Subtítulo do banner">
+
+            <input type="text"
+                   id="banner-logo-input"
+                   placeholder="URL da logo">
+
+            <input type="text"
+                   id="banner-imagem"
+                   placeholder="URL da imagem do banner">
+
+            <button type="submit">
+                Salvar Banner
+            </button>
+
+        </form>
+
+    </div>
+
+    <!-- PRODUTORES -->
+
+    <div id="cadastro-produtor"
+         class="admin-section"
+         style="display:none;">
 
         <h2>Cadastrar Produtor</h2>
 
@@ -56,12 +105,12 @@
 
             <input type="text"
                    id="historia"
-                   placeholder="História do produtor"
+                   placeholder="História"
                    required>
 
             <input type="text"
                    id="produto"
-                   placeholder="Produto vendido"
+                   placeholder="Produto"
                    required>
 
             <input type="text"
@@ -81,19 +130,19 @@
 
     <div id="produtores-cadastrados"
          class="admin-section"
-         style="display: none;">
+         style="display:none;">
 
-        <h2>Produtores Cadastrados</h2>
+        <h2>Produtores</h2>
 
         <div id="lista-admin-produtores"></div>
 
     </div>
 
-    <!-- EDITAR FEIRA -->
+    <!-- FEIRA -->
 
     <div id="editar-feira"
          class="admin-section"
-         style="display: none;">
+         style="display:none;">
 
         <h2>Informações da Feira</h2>
 
@@ -101,18 +150,18 @@
 
             <input type="text"
                    id="local-feira"
-                   placeholder="Local da feira">
+                   placeholder="Local">
 
             <input type="text"
                    id="data-feira"
-                   placeholder="Data da feira">
+                   placeholder="Data">
 
             <input type="text"
                    id="horario-feira"
-                   placeholder="Horário da feira">
+                   placeholder="Horário">
 
             <button type="submit">
-                Salvar Informações
+                Salvar
             </button>
 
         </form>
@@ -123,9 +172,9 @@
 
     <div id="avisos"
          class="admin-section"
-         style="display: none;">
+         style="display:none;">
 
-        <h2>Área de Avisos</h2>
+        <h2>Avisos</h2>
 
         <form id="form-aviso">
 
@@ -134,7 +183,7 @@
                    placeholder="Digite um aviso">
 
             <button type="submit">
-                Publicar Aviso
+                Publicar
             </button>
 
         </form>
@@ -147,26 +196,23 @@
 
     <div id="receitas-admin"
          class="admin-section"
-         style="display: none;">
+         style="display:none;">
 
-        <h2>Adicionar Receita</h2>
+        <h2>Receitas</h2>
 
         <form id="form-receita">
 
             <input type="text"
                    id="nome-receita"
-                   placeholder="Nome da receita"
-                   required>
+                   placeholder="Nome da receita">
 
             <input type="text"
                    id="descricao-receita"
-                   placeholder="Descrição da receita"
-                   required>
+                   placeholder="Descrição">
 
             <input type="text"
                    id="imagem-receita"
-                   placeholder="URL da imagem"
-                   required>
+                   placeholder="URL da imagem">
 
             <button type="submit">
                 Adicionar Receita
