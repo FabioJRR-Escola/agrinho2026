@@ -1,12 +1,17 @@
 * {
+
     margin: 0;
     padding: 0;
+
     box-sizing: border-box;
+
     font-family: Verdana, sans-serif;
 }
 
 body {
+
     background: #F5F5F5;
+
     color: #183222;
 }
 
@@ -15,73 +20,103 @@ TELA INICIAL
 ========================================= */
 
 .tela-inicial {
+
     position: fixed;
+
     inset: 0;
-    
-    /* CORREÇÃO: Usa background-image para permitirLayering (imagem + gradiente) */
-    /* Se você tiver uma imagem de fundo use: url('suaimagem.jpg'), se não, pode remover a parte do url */
-    background-image: 
+
+    background:
         linear-gradient(
             rgba(0,0,0,0.60),
             rgba(0,0,0,0.60)
-        ); 
-    url(feira.jpeg;)
+        ),
+        url(feira.jpeg)
 
     background-size: cover;
+
     background-position: center;
 
     display: flex;
+
     justify-content: center;
+
     align-items: center;
+
     z-index: 9999;
+
     padding: 20px;
 }
 
 .inicio-box {
+
     background: white;
+
     width: 100%;
+
     max-width: 360px;
+
     border-radius: 20px;
+
     padding: 25px;
+
     text-align: center;
 }
 
 .inicio-box h1 {
+
     color: #183222;
+
     margin-bottom: 18px;
 }
 
 .inicio-box p {
+
     line-height: 1.6;
+
     margin-bottom: 15px;
 }
 
 .inicio-box span {
+
     display: block;
+
     margin-bottom: 20px;
+
     color: #4E6B58;
 }
 
 .botoes-inicio {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 12px;
+
     margin-bottom: 18px;
 }
 
 .botoes-inicio button,
 .entrar-site {
+
     background: #183222;
+
     color: white;
+
     border: none;
+
     padding: 14px;
+
     border-radius: 12px;
+
     cursor: pointer;
-    width: 100%; /* Garante que ocupe a largura total dentro do flex container */
 }
 
 .entrar-site {
+
     background: #35523F;
+
+    width: 100%;
 }
 
 /* =========================================
@@ -89,11 +124,17 @@ TOPO
 ========================================= */
 
 header {
+
     background: #183222;
+
     color: white;
+
     padding: 18px;
+
     text-align: center;
+
     font-size: 22px;
+
     font-weight: bold;
 }
 
@@ -102,52 +143,74 @@ BANNER
 ========================================= */
 
 .banner {
+
     position: relative;
+
     height: 240px;
+
     overflow: hidden;
 }
 
 .banner img {
+
     width: 100%;
     height: 100%;
+
     object-fit: cover;
 }
 
 .banner-escuro {
+
     position: absolute;
+
     inset: 0;
+
     background: rgba(0,0,0,0.45);
 }
 
 .banner-info {
+
     position: absolute;
+
     bottom: 20px;
+
     left: 20px;
+
     color: white;
 }
 
 .banner-info h1 {
+
     font-size: 30px;
+
     margin-bottom: 10px;
 }
 
 .banner-info p {
+
     font-size: 15px;
+
     max-width: 240px;
+
     line-height: 1.5;
 }
+
 
 /* =========================================
 SEÇÕES
 ========================================= */
 
 section {
+
     padding: 20px;
 }
 
 section h2 {
+
     margin-bottom: 15px;
+
     color: #183222;
+
     font-size: 24px;
 }
 
@@ -156,14 +219,20 @@ CAIXAS
 ========================================= */
 
 .caixa {
+
     background: white;
+
     border-left: 6px solid #183222;
+
     padding: 16px;
+
     border-radius: 12px;
+
     margin-bottom: 18px;
 }
 
 .caixa p {
+
     line-height: 1.6;
 }
 
@@ -172,25 +241,37 @@ PRODUTORES
 ========================================= */
 
 .produtores {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 18px;
 }
 
 .produtor {
+
     background: white;
+
     border-radius: 14px;
+
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,0.08);
 }
 
 .produtor img {
+
     width: 100%;
+
     height: 180px;
+
     object-fit: cover;
 }
 
 .produtor-info {
+
     padding: 15px;
 }
 
@@ -199,27 +280,101 @@ PRODUTOS
 ========================================= */
 
 .produtos {
+
     display: flex;
+
     flex-direction: column;
+
     gap: 18px;
 }
 
 .produto {
+
     background: white;
+
     border-radius: 14px;
+
     overflow: hidden;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,0.08);
 }
 
 .produto img {
+
     width: 100%;
+
     height: 170px;
+
     object-fit: cover;
 }
 
 .produto-info {
+
     padding: 15px;
 }
 
 .produtor-nome {
-    color: #4
+
+    color: #4B6A56;
+
+    margin-top: 8px;
+
+    font-size: 14px;
+}
+
+/* =========================================
+RECEITAS
+========================================= */
+
+.receitas {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 18px;
+}
+
+.receita {
+
+    background: white;
+
+    border-radius: 14px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 3px 10px rgba(0,0,0,0.08);
+}
+
+.receita img {
+
+    width: 100%;
+
+    height: 170px;
+
+    object-fit: cover;
+}
+
+.receita-info {
+
+    padding: 15px;
+}
+
+/* =========================================
+RODAPÉ
+========================================= */
+
+footer {
+
+    background: #183222;
+
+    color: white;
+
+    text-align: center;
+
+    padding: 20px;
+
+    margin-top: 25px;
+}
