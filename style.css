@@ -535,104 +535,149 @@ MODO ESCURO
    CALENDÁRIO DA SAFRA
 ========================= */
 
-.dark-mode .fpmc-safra-tabela th {
+.dark-mode {
 
-   background: #2E7D32;
-
-   color: #FFFFFF;
-}
-
-.dark-mode .fpmc-safra-tabela td {
+   background: #121212;
 
    color: #F5F5F5;
-
-   border-color: #333;
 }
 
-.dark-mode .fpmc-safra-tabela tbody tr:nth-child(even) {
+/* =========================
+   ESTRUTURA GERAL
+========================= */
 
-   background: #151515;
+.dark-mode header {
+   background: #0F2217;
 }
 
-.dark-mode .fpmc-safra-tabela tbody tr:nth-child(odd) {
-
-   background: #1B1B1B;
+.dark-mode footer {
+   background: #0F2217;
 }
 
-/* OUTROS ELEMENTOS EXISTENTES */
-.dark-mode .produtor-nome {
-
-   color: #A9E2B0;
+.dark-mode .acessibilidade {
+   background: #1E1E1E;
 }
 
-.dark-mode .inicio-box {
+/* =========================
+   CARDS GERAIS DO SITE
+========================= */
 
-   background: #222;
+.dark-mode .caixa,
+.dark-mode .produtor,
+.dark-mode .produto,
+.dark-mode .receita,
+.dark-mode .fpmc-impacto-card,
+.dark-mode .fpmc-grafico-box,
+.dark-mode .fpmc-texto-box,
+.dark-mode .fpmc-safra-item {
 
-   color: white;
+   background: #1E1E1E;
+
+   color: #F5F5F5;
 }
 
-.dark-mode .inicio-box h1 {
+/* =========================
+   TÍTULOS
+========================= */
+
+.dark-mode section h2,
+.dark-mode .fpmc-impacto-card h3,
+.dark-mode .fpmc-grafico-box h3,
+.dark-mode .fpmc-texto-box h3,
+.dark-mode .fpmc-safra-item h3 {
 
    color: #8DDB9A;
 }
 
-.dark-mode .inicio-box span {
+/* =========================
+   IMPORTÂNCIA DA FEIRA
+   (CORREÇÃO DEFINITIVA)
+========================= */
 
+.dark-mode #fpmc-impacto-feira,
+.dark-mode #fpmc-impacto-feira p,
+.dark-mode #fpmc-impacto-feira span,
+.dark-mode #fpmc-impacto-feira div {
+
+   color: #F5F5F5;
+}
+
+/* valores dos indicadores */
+.dark-mode .fpmc-impacto-valor {
+   color: #8DDB9A;
+}
+
+/* placeholders de gráfico */
+.dark-mode .fpmc-placeholder {
+   background: #151515;
+   border-color: #444;
+   color: #D0D0D0;
+}
+
+/* =========================
+   CALENDÁRIO DA SAFRA (NOVO MODELO)
+========================= */
+
+.dark-mode .fpmc-safra-item {
+   background: #1E1E1E;
+   color: #F5F5F5;
+}
+
+.dark-mode .fpmc-safra-item p {
+   color: #E0E0E0;
+}
+
+/* =========================
+   ELEMENTOS EXISTENTES
+========================= */
+
+.dark-mode .produtor-nome {
+   color: #A9E2B0;
+}
+
+.dark-mode .inicio-box {
+   background: #222;
+   color: white;
+}
+
+.dark-mode .inicio-box h1 {
+   color: #8DDB9A;
+}
+
+.dark-mode .inicio-box span {
    color: #D0D0D0;
 }
 
 .dark-mode .acessibilidade button {
-
    background: #2E7D32;
 }
 
 /* Calendário da Safra - Feira do Produtor Monte Castelo */
 
-#fpmc-safra-container {
-    max-width: 100%;
-    margin: 30px 0;
+.fpmc-safra {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 15px;
+    margin-top: 20px;
 }
 
-#fpmc-safra-container .fpmc-safra-destaque {
-    background: linear-gradient(135deg, #2e7d32, #43a047);
-    color: #fff;
-    padding: 18px;
+.fpmc-safra-item {
+    background: #ffffff;
+    padding: 15px;
     border-radius: 12px;
-    margin-bottom: 20px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
 
-#fpmc-safra-container .fpmc-safra-destaque h3 {
+.fpmc-safra-item h3 {
     margin: 0 0 8px;
-    font-size: 1.2rem;
+    color: #2e7d32;
+    font-size: 16px;
 }
 
-#fpmc-safra-container .fpmc-safra-destaque p {
+.fpmc-safra-item p {
     margin: 0;
-}
-
-#fpmc-safra-container .fpmc-safra-tabela {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-#fpmc-safra-container .fpmc-safra-tabela th {
-    background: #4caf50;
-    color: white;
-    padding: 12px;
-}
-
-#fpmc-safra-container .fpmc-safra-tabela td {
-    padding: 10px 12px;
-    border: 1px solid #ddd;
-}
-
-#fpmc-safra-container .fpmc-safra-tabela tbody tr:nth-child(even) {
-    background: #f8f8f8;
-}
-
-#fpmc-safra-container .fpmc-safra-tabela-wrapper {
-    overflow-x: auto;
+    font-size: 14px;
+    color: #444;
 }
 
 #fpmc-impacto-feira{
