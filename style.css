@@ -460,66 +460,100 @@ MODO ESCURO
 
 .dark-mode {
 
-    background: #121212;
+   background: #121212;
 
-    color: #F5F5F5;
+   color: #F5F5F5;
 }
 
 .dark-mode header {
 
-    background: #0F2217;
+   background: #0F2217;
 }
 
 .dark-mode footer {
 
-    background: #0F2217;
+   background: #0F2217;
 }
 
 .dark-mode .acessibilidade {
 
-    background: #1E1E1E;
+   background: #1E1E1E;
 }
 
 .dark-mode .caixa,
 .dark-mode .produtor,
 .dark-mode .produto,
-.dark-mode .receita {
+.dark-mode .receita,
+.dark-mode .fpmc-impacto-card,
+.dark-mode .fpmc-grafico-box,
+.dark-mode .fpmc-texto-box {
 
-    background: #222;
+   background: #222;
 
-    color: white;
+   color: white;
 }
 
-.dark-mode section h2 {
+.dark-mode section h2,
+.dark-mode .fpmc-impacto-card h3,
+.dark-mode .fpmc-grafico-box h3,
+.dark-mode .fpmc-texto-box h3 {
 
-    color: #8DDB9A;
+   color: #8DDB9A;
 }
 
 .dark-mode .produtor-nome {
 
-    color: #A9E2B0;
+   color: #A9E2B0;
 }
 
 .dark-mode .inicio-box {
 
-    background: #222;
+   background: #222;
 
-    color: white;
+   color: white;
 }
 
 .dark-mode .inicio-box h1 {
 
-    color: #8DDB9A;
+   color: #8DDB9A;
 }
 
 .dark-mode .inicio-box span {
 
-    color: #D0D0D0;
+   color: #D0D0D0;
 }
 
 .dark-mode .acessibilidade button {
 
-    background: #2E7D32;
+   background: #2E7D32;
+}
+
+/* Área Importância da Feira */
+
+.dark-mode #fpmc-impacto-feira {
+
+   background: #121212;
+
+   color: #F5F5F5;
+}
+
+.dark-mode .fpmc-impacto-cabecalho p {
+
+   color: #F5F5F5;
+}
+
+.dark-mode .fpmc-impacto-valor {
+
+   color: #8DDB9A;
+}
+
+.dark-mode .fpmc-placeholder {
+
+   background: #1E1E1E;
+
+   border-color: #555;
+
+   color: #D0D0D0;
 }
 
 /* Calendário da Safra - Feira do Produtor Monte Castelo */
