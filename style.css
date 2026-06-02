@@ -627,6 +627,14 @@ MODO ESCURO
    color: #E0E0E0;
 }
 
+.dark-mode .fpmc-safra-titulo {
+    color: #8DDB9A;
+}
+
+.dark-mode .fpmc-safra-subtitulo {
+    color: #D0D0D0;
+}
+
 /* =========================
    ELEMENTOS EXISTENTES
 ========================= */
