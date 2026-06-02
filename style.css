@@ -480,6 +480,10 @@ MODO ESCURO
    background: #1E1E1E;
 }
 
+/* =========================
+   CARDS GERAIS + FEIRA
+========================= */
+
 .dark-mode .caixa,
 .dark-mode .produtor,
 .dark-mode .produto,
@@ -488,11 +492,12 @@ MODO ESCURO
 .dark-mode .fpmc-grafico-box,
 .dark-mode .fpmc-texto-box {
 
-   background: #222;
+   background: #1E1E1E;
 
-   color: white;
+   color: #F5F5F5;
 }
 
+/* TÍTULOS GERAIS */
 .dark-mode section h2,
 .dark-mode .fpmc-impacto-card h3,
 .dark-mode .fpmc-grafico-box h3,
@@ -501,6 +506,60 @@ MODO ESCURO
    color: #8DDB9A;
 }
 
+/* TEXTO DA IMPORTÂNCIA DA FEIRA (CORREÇÃO PRINCIPAL) */
+.dark-mode #fpmc-impacto-feira,
+.dark-mode #fpmc-impacto-feira p,
+.dark-mode #fpmc-impacto-feira span,
+.dark-mode #fpmc-impacto-feira div {
+
+   color: #F5F5F5;
+}
+
+/* VALORES DOS INDICADORES */
+.dark-mode .fpmc-impacto-valor {
+
+   color: #8DDB9A;
+}
+
+/* PLACEHOLDER DOS GRÁFICOS */
+.dark-mode .fpmc-placeholder {
+
+   background: #151515;
+
+   border-color: #444;
+
+   color: #D0D0D0;
+}
+
+/* =========================
+   CALENDÁRIO DA SAFRA
+========================= */
+
+.dark-mode .fpmc-safra-tabela th {
+
+   background: #2E7D32;
+
+   color: #FFFFFF;
+}
+
+.dark-mode .fpmc-safra-tabela td {
+
+   color: #F5F5F5;
+
+   border-color: #333;
+}
+
+.dark-mode .fpmc-safra-tabela tbody tr:nth-child(even) {
+
+   background: #151515;
+}
+
+.dark-mode .fpmc-safra-tabela tbody tr:nth-child(odd) {
+
+   background: #1B1B1B;
+}
+
+/* OUTROS ELEMENTOS EXISTENTES */
 .dark-mode .produtor-nome {
 
    color: #A9E2B0;
@@ -526,34 +585,6 @@ MODO ESCURO
 .dark-mode .acessibilidade button {
 
    background: #2E7D32;
-}
-
-/* Área Importância da Feira */
-
-.dark-mode #fpmc-impacto-feira {
-
-   background: #121212;
-
-   color: #F5F5F5;
-}
-
-.dark-mode .fpmc-impacto-cabecalho p {
-
-   color: #F5F5F5;
-}
-
-.dark-mode .fpmc-impacto-valor {
-
-   color: #8DDB9A;
-}
-
-.dark-mode .fpmc-placeholder {
-
-   background: #1E1E1E;
-
-   border-color: #555;
-
-   color: #D0D0D0;
 }
 
 /* Calendário da Safra - Feira do Produtor Monte Castelo */
