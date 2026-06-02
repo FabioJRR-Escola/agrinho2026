@@ -521,3 +521,51 @@ MODO ESCURO
 
     background: #2E7D32;
 }
+
+/* Calendário da Safra - Feira do Produtor Monte Castelo */
+
+#fpmc-safra-container {
+    max-width: 100%;
+    margin: 30px 0;
+}
+
+#fpmc-safra-container .fpmc-safra-destaque {
+    background: linear-gradient(135deg, #2e7d32, #43a047);
+    color: #fff;
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 20px;
+}
+
+#fpmc-safra-container .fpmc-safra-destaque h3 {
+    margin: 0 0 8px;
+    font-size: 1.2rem;
+}
+
+#fpmc-safra-container .fpmc-safra-destaque p {
+    margin: 0;
+}
+
+#fpmc-safra-container .fpmc-safra-tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+#fpmc-safra-container .fpmc-safra-tabela th {
+    background: #4caf50;
+    color: white;
+    padding: 12px;
+}
+
+#fpmc-safra-container .fpmc-safra-tabela td {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+}
+
+#fpmc-safra-container .fpmc-safra-tabela tbody tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+#fpmc-safra-container .fpmc-safra-tabela-wrapper {
+    overflow-x: auto;
+}
