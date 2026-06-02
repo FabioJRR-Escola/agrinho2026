@@ -654,12 +654,12 @@ MODO ESCURO
 
 /* Calendário da Safra - Feira do Produtor Monte Castelo */
 
-#fpmc-calendario-safra .fpmc-safra-cabecalho{
+#fpmc-safra .fpmc-safra-cabecalho{
     text-align:center;
     margin-bottom:40px;
 }
 
-#fpmc-calendario-safra .fpmc-safra-cabecalho h2{
+#fpmc-safra .fpmc-safra-cabecalho h2{
     color:#2e7d32;
     margin-bottom:12px;
 }
