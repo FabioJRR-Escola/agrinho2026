@@ -503,7 +503,7 @@ MODO ESCURO
 .dark-mode .fpmc-grafico-box h3,
 .dark-mode .fpmc-texto-box h3 {
 
-   color: #8DDB9A;
+   color: #1E1E1E;
 }
 
 /* =========================
@@ -535,11 +535,11 @@ IMPORTÂNCIA DA FEIRA
 .dark-mode .fpmc-impacto-card h3,
 .dark-mode .fpmc-grafico-box h3,
 .dark-mode .fpmc-texto-box h3{
-    color:#8DDB9A;
+    color:#1E1E1E;
 }
 
 .dark-mode .fpmc-impacto-valor{
-    color:#8DDB9A;
+    color:#1E1E1E;
 }
 
 .dark-mode .fpmc-placeholder{
