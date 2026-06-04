@@ -506,31 +506,47 @@ MODO ESCURO
    color: #8DDB9A;
 }
 
-/* TEXTO DA IMPORTÂNCIA DA FEIRA (CORREÇÃO PRINCIPAL) */
+/* =========================
+IMPORTÂNCIA DA FEIRA
+========================= */
+
+.dark-mode #fpmc-impacto-feira{
+    background:#1E1E1E;
+}
+
 .dark-mode #fpmc-impacto-feira,
 .dark-mode #fpmc-impacto-feira p,
 .dark-mode #fpmc-impacto-feira span,
-.dark-mode #fpmc-impacto-feira div {
-
-   color: #3e3e3e;
+.dark-mode #fpmc-impacto-feira div{
+    color:#F5F5F5;
 }
 
-/* VALORES DOS INDICADORES */
-.dark-mode .fpmc-impacto-valor {
-
-   color: #8DDB9A;
+.dark-mode #fpmc-impacto-feira .fpmc-impacto-cabecalho p{
+    color:#D0D0D0;
 }
 
-/* PLACEHOLDER DOS GRÁFICOS */
-.dark-mode .fpmc-placeholder {
-
-   background: #151515;
-
-   border-color: #444;
-
-   color: #D0D0D0;
+.dark-mode .fpmc-impacto-card,
+.dark-mode .fpmc-grafico-box,
+.dark-mode .fpmc-texto-box{
+    background:#1E1E1E;
+    color:#F5F5F5;
 }
 
+.dark-mode .fpmc-impacto-card h3,
+.dark-mode .fpmc-grafico-box h3,
+.dark-mode .fpmc-texto-box h3{
+    color:#8DDB9A;
+}
+
+.dark-mode .fpmc-impacto-valor{
+    color:#8DDB9A;
+}
+
+.dark-mode .fpmc-placeholder{
+    background:#151515;
+    border-color:#444;
+    color:#D0D0D0;
+}
 /* =========================
    CALENDÁRIO DA SAFRA
 ========================= */
