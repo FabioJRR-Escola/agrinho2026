@@ -1,3 +1,5 @@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 let tamanhoFonte = 100;
 
 function fecharTela() {
@@ -62,3 +64,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+
+
+<!-- GRÁFICOS (Chart.js) -->
+<script>
+new Chart(document.getElementById('graficoExperiencia'), {
+    type: 'bar',
+    data: {
+        labels: ['Produtor 1', 'Produtor 2', 'Produtor 3'],
+        datasets: [{
+            label: 'Anos de Experiência',
+            data: [7, 10, 5]
+        }]
+    }
+});
+
+new Chart(document.getElementById('graficoSobras'), {
+    type: 'pie',
+    data: {
+        labels: [
+            'Alimentação Animal',
+            'Compostagem',
+            'Consumo Familiar',
+            'Doação'
+        ],
+        datasets: [{
+            data: [2, 2, 1, 1]
+        }]
+    }
+});
+</script>
