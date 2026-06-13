@@ -779,7 +779,7 @@ IMPORTÂNCIA DA FEIRA
 
 #fpmc-impacto-feira .fpmc-impacto-graficos{
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    grid-template-columns:repeat(auto-fit,minmax(100px,1fr));
     gap:25px;
     margin-bottom:40px;
 }
@@ -800,14 +800,6 @@ IMPORTÂNCIA DA FEIRA
     justify-content:center;
     color:#7a7a7a;
     margin-top:15px;
-}
-
-.fpmc-grafico-box img {
-    width: 100%;
-    max-width: 500px;
-    height: auto;
-    margin: 0 auto;
-    display: block;
 }
 
 #fpmc-impacto-feira .fpmc-impacto-conteudo{
